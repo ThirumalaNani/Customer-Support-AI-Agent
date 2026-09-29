@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.pytest_cache/
+*.log
+SPEC.md
+data/
+backup/
+CHANGELOG.md
+node_modules/
+Start.md
+zips/
+
+zips/

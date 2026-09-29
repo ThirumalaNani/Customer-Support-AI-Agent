@@ -1,0 +1,73 @@
+/**
+ * Skeleton Shimmer Loading Effect
+ */
+
+.skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerPulse 1.8s infinite;
+  border-radius: var(--radius-sm);
+}
+
+[data-theme='light'] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 25%,
+    rgba(0, 0, 0, 0.09) 50%,
+    rgba(0, 0, 0, 0.04) 75%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes shimmerPulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton--text {
+  height: 14px;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton--line {
+  height: 12px;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton--avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.skeleton--card {
+  height: 80px;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-message-row {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  width: 100%;
+}
+
+.skeleton-message-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}

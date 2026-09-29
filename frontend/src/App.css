@@ -1,0 +1,77 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  background-image: var(--color-bg-gradient);
+  background-attachment: fixed;
+}
+
+.app-main-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-6);
+  max-width: 1680px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.workspace-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat Workspace Layout (Clean Default vs With Context Panel) */
+.chat-workspace-layout {
+  display: grid;
+  gap: var(--space-4);
+  align-items: stretch;
+  height: 100%;
+}
+
+.chat-workspace-layout--clean {
+  grid-template-columns: auto 1fr;
+}
+
+.chat-workspace-layout--with-context {
+  grid-template-columns: auto 1fr 340px;
+}
+
+.chat-workspace-center {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-workspace-right {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive Reflow */
+@media (max-width: 1280px) {
+  .chat-workspace-layout {
+    grid-template-columns: auto 1fr;
+  }
+  .chat-workspace-right {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-main-workspace {
+    padding: var(--space-3) var(--space-3);
+  }
+  .chat-workspace-layout {
+    grid-template-columns: 1fr;
+  }
+  .conv-sidebar {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    max-height: 240px;
+  }
+}
