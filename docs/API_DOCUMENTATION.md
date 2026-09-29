@@ -13,10 +13,10 @@ Example:
   "status": "healthy",
   "timestamp": "2026-09-28T12:00:00+00:00",
   "agent_name": "Support Assistant",
-  "llm_provider": "gemini",
-  "llm_model": "gemini-3.8-flash",
+  "llm_provider": "groq",
+  "llm_model": "<configured-model-id>",
   "history_provider": "hindsight",
-  "hindsight_base_url": "http://localhost:8888",
+  "hindsight_base_url": "https://api.hindsight.vectorize.io",
   "hindsight": "connected",
   "llm": "configured"
 }

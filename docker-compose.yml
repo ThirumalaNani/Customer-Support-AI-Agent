@@ -10,9 +10,9 @@ services:
       GEMINI_API_KEY: ${GEMINI_API_KEY}
       GEMINI_BASE_URL: ${GEMINI_BASE_URL:-https://generativelanguage.googleapis.com/v1beta}
       GROQ_API_KEY: ${GROQ_API_KEY}
-      LLM_MODEL: ${LLM_MODEL:-gemini-3.8-flash}
+      LLM_MODEL: ${LLM_MODEL}
       GROQ_MODEL: ${GROQ_MODEL}
-      LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
+      LLM_PROVIDER: ${LLM_PROVIDER}
       HISTORY_PROVIDER: ${HISTORY_PROVIDER:-hindsight}
       HINDSIGHT_BASE_URL: ${HINDSIGHT_BASE_URL}
       HINDSIGHT_API_KEY: ${HINDSIGHT_API_KEY}

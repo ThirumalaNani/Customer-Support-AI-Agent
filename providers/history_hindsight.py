@@ -22,7 +22,7 @@ class HindsightHistoryProvider(HistoryProvider):
 
     def __init__(
         self,
-        base_url: str = "http://localhost:8888",
+        base_url: str,
         api_key: str = "",
         timeout_seconds: int = 30,
         max_retries: int = 2,

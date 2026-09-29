@@ -181,3 +181,29 @@ def test_analytics_empty_state(tmp_path):
     assert analytics["csatScore"] is None
     assert analytics["responsesUsingRecalledContextPercent"] is None
     assert analytics["trendData"] == []
+
+
+# — Config fail-fast
+def test_load_config_requires_provider_model_and_hindsight_url(monkeypatch):
+    from config import ConfigError, load_config
+
+    monkeypatch.setattr("config.load_dotenv", lambda *a, **k: None)
+    for name in ("LLM_PROVIDER", "LLM_MODEL", "GROQ_MODEL", "HINDSIGHT_BASE_URL"):
+        monkeypatch.delenv(name, raising=False)
+    with pytest.raises(ConfigError) as exc:
+        load_config()
+    message = str(exc.value)
+    assert "LLM_PROVIDER" in message and "LLM_MODEL" in message and "HINDSIGHT_BASE_URL" in message
+
+
+def test_load_config_accepts_legacy_groq_model(monkeypatch):
+    from config import load_config
+
+    monkeypatch.setattr("config.load_dotenv", lambda *a, **k: None)
+    monkeypatch.setenv("LLM_PROVIDER", "groq")
+    monkeypatch.delenv("LLM_MODEL", raising=False)
+    monkeypatch.setenv("GROQ_MODEL", "legacy-model")
+    monkeypatch.setenv("HINDSIGHT_BASE_URL", "https://hindsight.test/")
+    cfg = load_config()
+    assert cfg.llm_model == "legacy-model"
+    assert cfg.hindsight_base_url == "https://hindsight.test"

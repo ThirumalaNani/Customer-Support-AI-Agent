@@ -1,7 +1,14 @@
 import asyncio
+import os
 import sys
 import unittest
 from pathlib import Path
+
+# — Test environment
+# WHY: load_config() fails fast without these; placeholders only, providers are stubbed.
+os.environ.setdefault("LLM_PROVIDER", "groq")
+os.environ.setdefault("LLM_MODEL", "test-model")
+os.environ.setdefault("HINDSIGHT_BASE_URL", "https://hindsight.test")
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 

@@ -29,7 +29,7 @@ A customer with no Hindsight history remains an empty memory state. There is no 
 
 Copy `.env.example` to `.env`.
 
-The canonical application model variable is `LLM_MODEL`. The default provider is Gemini with the current stable `gemini-3.8-flash` model; Groq remains available as an alternate provider.
+LLM providers are swappable. `LLM_PROVIDER` (`gemini` or `groq`) and `LLM_MODEL` are both required; no provider or model is assumed, and the backend refuses to start if either is missing. `LLM_MODEL` is the canonical model variable (legacy `GROQ_MODEL` is still read as a fallback).
 
 For Hindsight Cloud (the supported deployment in this change set):
 
@@ -71,7 +71,7 @@ python -m pip install -r requirements.txt
 
 ## Run with Hindsight Cloud and Docker Compose
 
-Create `.env` from `.env.example` and set `GEMINI_API_KEY`, `LLM_MODEL`, `HINDSIGHT_BASE_URL`, `HINDSIGHT_API_KEY`, and `ADMIN_API_KEY`.
+Create `.env` from `.env.example` and set `LLM_PROVIDER`, `LLM_MODEL`, the matching provider API key, `HINDSIGHT_BASE_URL`, `HINDSIGHT_API_KEY`, and `ADMIN_API_KEY`.
 
 ```bash
 docker compose up -d --build
